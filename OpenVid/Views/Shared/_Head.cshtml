@@ -1,0 +1,33 @@
+﻿@using Microsoft.Extensions.Configuration
+@inject IConfiguration Configuration
+@{
+    var siteName = Configuration["SiteName"] ?? "OpenVid";
+    if (!string.IsNullOrWhiteSpace(ViewBag.Title))
+        siteName = $"{ViewBag.Title} - {siteName}";
+}
+
+<meta charset="utf-8" />
+<title>@siteName</title>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
+
+<!-- ================== BEGIN BASE CSS STYLE ================== -->
+<link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+<link href="https://cdn.jsdelivr.net/npm/select2@4.0.12/dist/css/select2.min.css" rel="stylesheet" />
+<link href="~/css/app.min.css" rel="stylesheet" />
+<link href="~/css/admin.css" rel="stylesheet" />
+<link href="~/css/site.css" rel="stylesheet" />
+<!-- ================== END BASE CSS STYLE ================== -->
+<!-- ================== BEGIN BASE JS ================== -->
+<script src="~/js/app.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.0.12/dist/js/select2.min.js"></script>
+<script src="~/js/site.js"></script>
+<!-- ================== END BASE JS ================== -->
+<!-- ================== BEGIN SHAKA PLAYER ================== -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/shaka-player/4.2.1/shaka-player.ui.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/shaka-player/4.2.1/controls.min.css">
+
+<link href="https://fonts.googleapis.com/css?family=Material+Icons+Sharp" rel="stylesheet">
+<script defer src="https://www.gstatic.com/cv/js/sender/v1/cast_sender.js"></script>
+<link rel="stylesheet" href="~/lib/shaka-player/youtube-theme/youtube-theme.css">
+<!-- ================== END SHAKA PLAYER ================== -->

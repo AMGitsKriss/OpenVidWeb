@@ -1,0 +1,25 @@
+﻿@model OpenVid.Areas.Catalog.Models.Edit.VideoThumbnailsViewModel
+
+@using (Html.BeginPanel("Thumbnails"))
+{
+    <div class="row m-b-5">
+        <img src="@Url.Action(SiteMap.Playback_Thumbnail_Manual, new { Id = Model.Id })?@DateTime.Now.ToString("HHmmss")" />
+        <div class=" m-l-10 col">
+            <div class="row">
+                <p>Uploaded Thumbnail</p>
+            </div>
+
+            <div class="row">
+                <form id="uploadThumbnail">
+                    @Html.HiddenFor(m => m.Id)
+                    <input id="Image" class="btn btn-primary" type="file" name="Image" value="Upload" accept=".jpg" />
+                </form>
+                <button id="deleteImage" class="btn btn-danger m-l-10" type="submit" formaction="@Url.Action(SiteMap.Catalog_Edit_DeleteThumbnail)">Delete</button>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <img src="@Url.Action(SiteMap.Playback_Thumbnail_Auto, new { Id = Model.Id })" />
+        <div class="col">Automated Thumbnail</div>
+    </div>
+}

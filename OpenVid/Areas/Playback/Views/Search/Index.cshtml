@@ -1,0 +1,28 @@
+﻿@model OpenVid.Areas.Playback.Models.Search.SearchViewModel
+@{
+    ViewBag.Title = Model.SearchString;
+    ViewBag.SearchString = Model.SearchString;
+}
+<div class="container">
+    <div class="row">
+        <div class="col-md-2 border-right">
+            @{await Html.RenderPartialAsync("_TagList", Model.TagGroups);}
+        </div>
+        <div class="col-md-10">
+            <h3 class="row">Search Results</h3>
+            <div class="newPage">
+                <a id="loadMore"></a>
+            </div>
+            <script>
+                $(document).ready(function () {
+                    var urlParams = new URLSearchParams(window.location.search);
+                    var page = 1;
+                    if(urlParams.has('page'))
+                        page = urlParams.get('page');
+
+                    loadMore(page, '@Model.SearchString');
+                });
+            </script>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,20 @@
+﻿@{
+    ViewBag.Title = "Tag Management";
+}
+<div class="breadcrumb float-right">
+    <button disabled class="btn btn-dark" data-toggle="tooltip" title="Check for unused tags and delete them.">Kull Unused</button>
+</div>
+
+<h3 class="page-header">
+    Tag Management
+</h3>
+
+
+<div class="row">
+    <div class="col-md-12">
+        @using (Html.BeginPanel("Find Tags", true))
+        {
+            <p>Big list of tags will go in here eventually. We'll want to perform CRUD opetations on them.</p>
+        }
+    </div>
+</div>

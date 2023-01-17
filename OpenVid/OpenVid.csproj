@@ -1,0 +1,74 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="wwwroot\lib\NewFolder\**" />
+    <Compile Remove="wwwroot\test\**" />
+    <Content Remove="wwwroot\lib\NewFolder\**" />
+    <Content Remove="wwwroot\test\**" />
+    <EmbeddedResource Remove="wwwroot\lib\NewFolder\**" />
+    <EmbeddedResource Remove="wwwroot\test\**" />
+    <None Remove="wwwroot\lib\NewFolder\**" />
+    <None Remove="wwwroot\test\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="compilerconfig.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="compilerconfig.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MediaToolKit.B" Version="1.0.2" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="3.1.28" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="3.1.9" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.1.28">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.5" />
+    <PackageReference Include="SendGrid" Version="9.21.2" />
+    <PackageReference Include="System.Drawing.Common" Version="4.7.0" />
+    <PackageReference Include="TagLibSharp" Version="2.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CatalogManager\CatalogManager.csproj" />
+    <ProjectReference Include="..\Database\Database.csproj" />
+    <ProjectReference Include="..\TagCache\TagCache.csproj" />
+    <ProjectReference Include="..\VideoHandler\VideoHandler.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="Areas\Account\Views\Management\Index.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="Areas\Account\Views\_ViewImports.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="Areas\Account\Views\_ViewStart.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\import\01_pending\BlackBlackFalcon-mobile.mp4">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\import\01_ingest\" />
+    <Folder Include="wwwroot\import\02_queued\" />
+    <Folder Include="wwwroot\import\03_transcode_complete\" />
+    <Folder Include="wwwroot\import\04_shaka_packager\" />
+    <Folder Include="wwwroot\lib\dashjs\akamai\" />
+  </ItemGroup>
+
+</Project>

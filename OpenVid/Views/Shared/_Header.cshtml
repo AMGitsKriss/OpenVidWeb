@@ -1,0 +1,139 @@
+﻿@using Microsoft.Extensions.Configuration
+@using Microsoft.AspNetCore.Identity
+@using Database.Users
+@inject IConfiguration Configuration
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+@{
+    var SiteName = Configuration["SiteName"] ?? "OpenVid";
+    string currentArea = this.ViewContext.RouteData.Values["area"]?.ToString() ?? string.Empty;
+    bool frontEnd = currentArea.ToLower() == "playback" || currentArea.ToLower() == string.Empty;
+}
+
+<!-- begin #header -->
+<div id="header" class="header navbar-default">
+    <!-- begin navbar-header -->
+    <div class="navbar-header">
+        @if (!frontEnd)
+        {
+            <button type="button" class="navbar-toggle collapsed navbar-toggle-left" data-click="sidebar-minify">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <button type="button" class="navbar-toggle" data-click="sidebar-toggled">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        }
+
+        <div class="navbar-brand">
+            <a href="/" class="text-white-lighter">
+                <span class="material-icons align-middle">local_activity</span><span class="desktop-only">@SiteName</span>
+            </a>
+            <div class="navbar-item navbar-form">
+                <form id="searchBar" name="search" data-action="@Url.Action(SiteMap.Playback_Search, new { SearchString = " " })">
+                    <div class="form-group">
+                        <input id="SearchString" type="text" class="form-control form-control-sm" placeholder="Enter keyword" value="@ViewBag.SearchString">
+                        <button type="submit" class="btn btn-search btn-sm"><i class="fa fa-search"></i></button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!-- begin header-nav -->
+        <div class="navbar-item navbar-right">
+            @*
+                <li class="dropdown">
+                    <a href="#" data-toggle="dropdown" class="dropdown-toggle icon">
+                        <i class="material-icons">inbox</i>
+                        <span class="label">0</span>
+                    </a>
+                    <ul class="dropdown-menu media-list dropdown-menu-right">
+                        <li class="dropdown-header">NOTIFICATIONS (0)</li>
+                        <li class="text-center width-300 p-b-10 p-t-10">
+                            No notification found
+                        </li>
+                    </ul>
+                </li>
+                @if (SignInManager.IsSignedIn(User))
+                {
+                    <li class="dropdown navbar-user">
+                        <a class="dropdown-toggle" data-toggle="dropdown">
+                            <span class="d-none d-md-inline">@User.Identity.Name</span>
+                            <div class="image image-icon text-white-lighter">
+                                <img src="~/images/avatars/mc/AMGitsKriss.png" />
+                            </div>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right">
+                            <a href="javascript:;" class="dropdown-item">Help</a>
+                            <a href="javascript:;" class="dropdown-item">Settings</a>
+                            <div class="dropdown-divider"></div>
+                            <a href="@Url.Action("Index", "Logout", new { area = "Account" })" class="dropdown-item">Log Out</a>
+                        </div>
+                    </li>
+                }
+                else
+                {
+                    <li class="navbar-user">
+                        <a asp-area="account" asp-controller="login" class="icon">
+                            <span class="d-none d-md-inline">Login</span>
+                            <div class="image image-icon text-white-lighter">
+                                <i class="material-icons">login</i>
+                            </div>
+                        </a>
+                    </li>
+                }
+            *@
+            <ul class="navbar-nav navbar-right no-border">
+                @if (SignInManager.IsSignedIn(User))
+                {
+                    <li class="navbar-user">
+                        <a href="@Url.Action(SiteMap.Account_Management)" class="icon">
+                            <span class="d-none d-md-inline">Admin</span>
+                            <div class="image image-icon text-white-lighter">
+                                <span class="material-icons align-middle">settings</span>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="navbar-user">
+                        <a href="@Url.Action(SiteMap.Logout)" class="icon">
+                            <span class="d-none d-md-inline">Logout</span>
+                            <div class="image image-icon text-white-lighter">
+                                <span class="material-icons align-middle">logout</span>
+                            </div>
+                        </a>
+                    </li>
+                }
+                else
+                {
+                    <li class="navbar-user">
+                        <a href="@Url.Action(SiteMap.Login)" class="icon">
+                            <span class="d-none d-md-inline">Login</span>
+                            <div class="image image-icon text-white-lighter">
+                                <span class="material-icons align-middle">login</span>
+                            </div>
+                        </a>
+                    </li>
+                }
+                @*<li class="dropdown navbar-user">
+                        <a href="https://seantheme.com/color-admin/admin/html/page_blank.html#" class="dropdown-toggle" data-toggle="dropdown">
+                            <img src="./Color Admin _ Blank Page_files/user-13.jpg" alt="">
+                            <span class="d-none d-md-inline">Adam Schwartz</span> <b class="caret"></b>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right">
+                            <a href="javascript:;" class="dropdown-item">Edit Profile</a>
+                            <a href="javascript:;" class="dropdown-item"><span class="badge badge-danger pull-right">2</span> Inbox</a>
+                            <a href="javascript:;" class="dropdown-item">Calendar</a>
+                            <a href="javascript:;" class="dropdown-item">Setting</a>
+                            <div class="dropdown-divider"></div>
+                            <a href="javascript:;" class="dropdown-item">Log Out</a>
+                        </div>
+                    </li>*@
+            </ul>
+        </div>
+        <!-- end hea2der navigation right -->
+    </div>
+    <!-- end navbar-header -->
+</div>
+<!-- end #header -->

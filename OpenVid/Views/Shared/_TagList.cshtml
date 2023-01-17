@@ -1,0 +1,12 @@
+﻿@model List<OpenVid.Models.Shared.TagViewModel>
+
+@foreach (var tagGroup in Model)
+{
+    <b>@tagGroup.Category</b>
+    <ul>
+        @foreach (var tag in tagGroup.Tags)
+        {
+            <li>@tag.VideoTag.Count() - @Html.ActionLink(@tag.Name, SiteMap.Playback_Search, new { SearchString = $"tag:{tag.Name}" })</li>
+        }
+    </ul>
+}

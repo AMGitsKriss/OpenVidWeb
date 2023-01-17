@@ -1,0 +1,54 @@
+﻿@*@using Microsoft.Extensions.Configuration
+    @using Microsoft.AspNetCore.Identity
+    @using Database.Users
+    @inject IConfiguration Configuration
+    @inject SignInManager<ApplicationUser> SignInManager
+    @inject UserManager<ApplicationUser> UserManager*@
+@{
+    ViewBag.Title = "Account Management";
+}
+
+<h1 class="page-header">My Account <small>Hi @User.Identity.Name</small></h1>
+
+<div class="row">
+    <div class="col-md-12">
+        @using (Html.BeginPanel("Begin Panel"))
+        {
+            <p>This is a Panel.</p>
+            <p>I should be able to change my name, email &amp; password from this page.</p>
+            <p>I should also be able to manage my subscription if that functionality is enabled.</p>
+            <div class="row">
+
+                <form class="col-lg-4">
+                    <div class="row m-b-15">
+                        <label class="form-label col-form-label col-md-3">Name</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" placeholder="Name">
+                        </div>
+                    </div>
+                    <hr />
+                    <div class="row m-b-15">
+                        <label class="form-label col-form-label col-md-3">Email</label>
+                        <div class="col-sm-9">
+                            <input type="email" class="form-control" placeholder="Email">
+                        </div>
+                    </div>
+                    <hr />
+                    <div class="row m-b-15">
+                        <label class="form-label col-form-label col-md-3">Password</label>
+                        <div class="col-sm-9">
+                            <input type="password" class="form-control" placeholder="Password">
+                        </div>
+                    </div>
+                    <div class="row mb-15">
+                        <label class="form-label col-form-label col-md-3">Repeat Password</label>
+                        <div class="col-sm-9">
+                            <input type="password" class="form-control" placeholder="Password">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        }
+    </div>
+</div>
+

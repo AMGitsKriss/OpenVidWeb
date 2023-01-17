@@ -1,0 +1,175 @@
+﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
+for details on configuring this project to bundle and minify static web assets. */
+
+a.navbar-brand {
+    white-space: normal;
+    text-align: center;
+    word-break: break-all;
+}
+
+/* Provide sufficient contrast against white background */
+a {
+    color: #0366d6;
+}
+
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+    color: #fff;
+    background-color: #1b6ec2;
+    border-color: #1861ac;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+    font-size: 14px;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+.border-top {
+    border-top: 1px solid #e5e5e5;
+}
+
+.border-bottom {
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.box-shadow {
+    box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
+
+button.accept-policy {
+    font-size: 1rem;
+    line-height: inherit;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    /* Margin bottom by footer height */
+    margin-bottom: 60px;
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    white-space: nowrap;
+    line-height: 60px; /* Vertically center the text there */
+}
+
+#content {
+    height: 100%;
+}
+
+    #content iframe,
+    #content #mcmap,
+    #content #map {
+        margin: -25px -30px;
+        border: none;
+        height: calc(100% + 50px);
+        width: calc(100% + 60px);
+    }
+
+.page-header-fixed {
+    height: 100%;
+}
+
+.header .navbar-toggle, .header .navbar-brand, .header.navbar-default .navbar-nav > li > a {
+    max-height: 50px;
+    color: white !important;
+}
+
+.header .navbar-nav > li > a {
+    padding: 5px;
+}
+
+.header.navbar-default .navbar-toggle .icon-bar {
+    background: white;
+}
+
+#header, .btn-success, .btn-primary, .btn-primary:not(:disabled):not(.disabled).active, .btn-primary:not(:disabled):not(.disabled):active, .show > .btn-primary.dropdown-toggle {
+    background-color: #673147;
+    border-color: #673147;
+}
+
+#page-container, #sidebar {
+    padding-top: 50px;
+}
+
+.page-with-two-sidebar.page-sidebar-minified.page-with-wide-sidebar .sidebar-right.sidebar, .page-with-two-sidebar.page-sidebar-minified.page-with-wide-sidebar .sidebar-right.sidebar-bg, .page-with-wide-sidebar .sidebar, .page-with-wide-sidebar .sidebar-bg {
+    width: 200px;
+}
+
+@media (min-width: 768px) {
+    .page-with-wide-sidebar .content {
+        margin-left: 200px;
+    }
+}
+
+.sidebar .nav > li.active > a,
+.btn-primary:hover {
+    background: #774157;
+    border-color: #673147;
+}
+
+.pace .pace-progress {
+    top: 50px;
+    display: none;
+}
+
+.header .navbar-user .image, .header .navbar-user img,
+.header .navbar-brand img, .sidebar .nav > li.nav-profile .image img, .timeline .timeline-comment-box .user img, .widget-list .widget-list-item .widget-list-media img {
+    -webkit-border-radius: 0px;
+    border-radius: 0px;
+    margin: -3px 0;
+    border: solid;
+    border-color: black;
+}
+
+.sidebar .nav > li.nav-profile .image {
+    -webkit-border-radius: 0px;
+    border-radius: 0px;
+}
+
+.header .navbar-user .image.image-icon {
+    margin-left: 0px;
+    border: none;
+}
+
+    .header .navbar-nav .navbar-user a i,
+    .header .navbar-user .image.image-icon i {
+        font-size: 24px;
+        margin: -8px 0;
+    }
+
+.v-center {
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+
+.field-validation-error {
+    color: red;
+}
+
+.panel-body > .video-container{
+    margin:-15px;
+}
+
+#Video .video-container {
+    height: 456px;
+}

@@ -1,0 +1,12 @@
+﻿@model OpenVid.Models.Shared.VideoViewModel
+
+<a href="@Url.Action(SiteMap.Playback_Play, new { Area = "playback", Id = Model.Id })" data-toggle="tooltip" title="@Model.Name">
+    <div class="tile">
+        <div style="width: 300px; height: 168px; background: url('@Url.Action(SiteMap.Playback_Thumbnail, new { Id = Model.Id })'); position: relative;">
+            <span style="color: white; background-color: #00000088; padding:2px 5px; position:absolute; bottom:0;right:0;">
+                @Model.Length
+            </span>
+        </div>
+        <b>@Model.Name</b>
+    </div>
+</a>

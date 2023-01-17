@@ -1,0 +1,33 @@
+﻿@model OpenVid.Areas.Catalog.Models.Import.ImportViewModel
+@{
+    ViewBag.Title = "Import";
+}
+
+<div class="breadcrumb float-right">
+    <span>
+        <input id="uploadFile" type="file" name="file" multiple class="hide" />
+        <button id="uploadBtn" type="submit" class="btn btn-dark m-l-10" data-toggle="tooltip" title="Manually upload files into the unqueued folder. You can also copy files here directly if you have disk access.">Manual Upload</button>
+    </span>
+    <button id="queueBtn" class="btn btn-dark m-l-10" data-toggle="tooltip" title="Scan the import/upload directory for videos that have yet to be queued for encoding.">Queue Unqueued Files</button>
+</div>
+
+<h1 class="page-header">Import New Content</h1>
+
+<div class="row">
+    <div class="col-md-12">
+        <partial name="_01_PendingIngest" model="Model.FilesPendingQueueing" />
+
+        <partial name="_02_QueuedEncode" model="Model.FilesPendingEncode" />
+
+        <partial name="_03_PendingSegmenting" model="Model.FilesPendingSegmenting" />
+    </div>
+</div>
+
+@section scripts{
+    <script src="~/js/catalog/import.js"></script>
+    <script>
+        var uploadUrl = '@Url.Action(SiteMap.Catalog_Import_Upload)';
+        var queueUrl = '@Url.Action(SiteMap.Catalog_Import_Queue)';
+        importVideo.init();
+    </script>
+}

@@ -1,0 +1,126 @@
+﻿@{
+    string currentArea = this.ViewContext.RouteData.Values["area"]?.ToString() ?? string.Empty;
+    string currentController = this.ViewContext.RouteData.Values["controller"].ToString();
+}
+<!-- begin #sidebar -->
+<div id="sidebar" class="sidebar" data-disable-slide-animation="true">
+    <!-- begin sidebar scrollbar -->
+    <div data-scrollbar="true" data-height="100%">
+        <!-- begin sidebar user -->
+        @*
+            @if (isSignedIn)
+            {
+                <ul class="nav">
+                    <li class="nav-profile">
+                        <a href="javascript:;" data-toggle="nav-profile">
+                            <div class="cover with-shadow"></div>
+                            <div class="image image-icon">
+                                <img src="~/images/avatars/mc/AMGitsKriss.png" />
+                            </div>
+                            <div class="info">
+                                <b class="caret pull-right"></b>
+                                @User.Identity.Name
+                                <small><em>Zombie growls</em></small>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <ul class="nav nav-profile">
+                            <li><a href="@Url.Action("Index", "Details", new { area = "Account" })"><i class="fas fa-user"></i> Details</a></li>
+                            <li><a href="javascript:;"><i class="fa fa-pencil-alt"></i> Send Feedback</a></li>
+                            <li><a href="javascript:;"><i class="fa fa-question-circle"></i> Help</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <!-- end sidebar user -->
+            }*@
+        <!-- begin sidebar nav -->
+        <ul class="nav">
+            <li class="nav-header">Navigation</li>
+
+            @foreach (var area in SiteMap.AdminMenu.GroupBy(g => g.Area))
+            {
+                @if (area.Count() > 1)
+                {
+                    var isSelected = area.Select(c => c.Controller).Contains(currentController) && currentArea == area.First().Area;
+
+                    <li class="has-sub @((isSelected) ? "expand" : string.Empty)">
+                        <a>
+                            <b class="caret"></b>
+                            <i class="material-icons">arrow_right_alt</i>
+                            <span>@area.First().Area</span>
+                        </a>
+                        <ul class="sub-menu" @((isSelected) ? @"style=display:block;" : string.Empty)>
+                            @foreach (var item in area)
+                            {
+                            <li class="@((currentController == item.Controller && currentArea == item.Area) ? "active" : string.Empty)">
+                                @Html.ActionLink(item.Controller, item.Action, item.Controller, new { area = item.Area })
+                            </li>
+                            }
+                        </ul>
+                    </li>
+                }
+                else
+                {
+                    <li class="@((area.First().Controller == currentController && area.First().Area == currentArea) ? "active" : string.Empty)">
+                        <a href="@Url.Action(area.First().Action, area.First().Controller, new { area = area.First().Area })">
+                            <i class="material-icons">arrow_right_alt</i>
+                            <span>@area.First().Controller</span>
+                        </a>
+                    </li>
+                }
+
+                @*<li class="@(item.HasChildren ? "has-sub" : string.Empty) @(item.IsActive(currentController, currentArea) ? "active" : string.Empty)">
+                    @if (item.HasChildren)
+                        {
+                        }
+                        else if (!item.RequiresSignIn || isSignedIn == item.RequiresSignIn)
+                        {
+                            <a href="@Url.Action(item.Action, item.Controller, new { area = item.Area })">
+                                <i class="material-icons">@item.Icon</i>
+                                <span>@item.Name</span>
+                            </a>
+                        }
+                    </li>*@
+            }
+            @*
+                <hr />
+                <li class="has-sub">
+                    <a href="javascript:;">
+                        <b class="caret"></b>
+                        <i class="material-icons">list</i>
+                        <span>Menu Level</span>
+                    </a>
+                    <ul class="sub-menu">
+                        <li class="has-sub">
+                            <a href="javascript:;">
+                                <b class="caret"></b>
+                                Menu 1.1
+                            </a>
+                            <ul class="sub-menu">
+                                <li class="has-sub">
+                                    <a href="javascript:;">
+                                        <b class="caret"></b>
+                                        Menu 2.1
+                                    </a>
+                                    <ul class="sub-menu">
+                                        <li><a href="javascript:;">Menu 3.1</a></li>
+                                        <li><a href="javascript:;">Menu 3.2</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="javascript:;">Menu 2.2</a></li>
+                                <li><a href="javascript:;">Menu 2.3</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="javascript:;">Menu 1.2</a></li>
+                        <li><a href="javascript:;">Menu 1.3</a></li>
+                    </ul>
+                </li>
+            *@
+        </ul>
+        <!-- end sidebar nav -->
+    </div>
+    <!-- end sidebar scrollbar -->
+</div>
+<div class="sidebar-bg"></div>
+<!-- end #sidebar -->

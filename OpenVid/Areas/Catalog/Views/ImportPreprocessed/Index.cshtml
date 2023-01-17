@@ -1,0 +1,61 @@
+﻿@model OpenVid.Areas.Catalog.Models.ImportPreprocessed.ImportPreprocessedViewModel
+@{
+    ViewBag.Title = "Import";
+}
+
+<div class="container">
+    <div class="row">
+        <p>@Model.DiscoveredFiles.Count() files found.</p>
+        <div id="importForm">
+            <input type="submit" value="Import" />
+            <br />
+            @foreach (var file in Model.DiscoveredFiles)
+            {
+                <div class="row alert alert-secondary" data-file-name="@file.FileName" data-uploaded="false">
+                    <div class="col-1 status"><i>Pending</i></div>
+                    <div class="col-3 name">@file.FileName</div>
+                    <div class="col-8 tags">Suggested Tags: <i>@String.Join(", ", file.SuggestedTags)</i></div>
+                </div>
+            }
+
+            <script>
+                $(document).on('click', '#importForm>input', function(e) {
+                    importVideo(getNextVideo())
+                });
+
+                function importVideo(fileName) {
+                    var formData = new FormData();
+                    formData.append('fileName', fileName);
+
+                    $.ajax({
+                        type: 'POST',
+                        url: '@Url.Action(SiteMap.Catalog_ImportSave)',
+                        data: formData,
+                        processData: false,
+                        contentType: false,
+                        success: function(data) {
+                            $('[data-file-name="' + fileName + '"] .status').html(data.message);
+                            $('[data-file-name="' + fileName + '"]').attr('data-uploaded', "true");
+                            if ($('[data-uploaded="false"]').length > 0) {
+                                importVideo(getNextVideo());
+                            }
+                        },
+                        error: function(error) {
+                            $('[data-file-name="' + fileName + '"] .status').html('Internal server error.');
+                            $('[data-file-name="' + fileName + '"]').attr('data-uploaded', "error");
+                            if ($('[data-uploaded="false"]').length > 0) {
+                                importVideo(getNextVideo());
+                            }
+                        }
+                    });
+                }
+
+                function getNextVideo() {
+                    var fileToUpload = $('[data-uploaded="false"]').first();
+                    var fileName = $(fileToUpload).attr('data-file-name');
+                    return fileName;
+                }
+            </script>
+        </div>
+    </div>
+</div>

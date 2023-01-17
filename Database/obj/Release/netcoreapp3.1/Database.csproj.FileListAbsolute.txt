@@ -1,0 +1,12 @@
+C:\Users\Kriss\source\repos\OpenVid\Database\bin\Release\netcoreapp3.1\Database.deps.json
+C:\Users\Kriss\source\repos\OpenVid\Database\bin\Release\netcoreapp3.1\Database.runtimeconfig.json
+C:\Users\Kriss\source\repos\OpenVid\Database\bin\Release\netcoreapp3.1\Database.runtimeconfig.dev.json
+C:\Users\Kriss\source\repos\OpenVid\Database\bin\Release\netcoreapp3.1\Database.dll
+C:\Users\Kriss\source\repos\OpenVid\Database\bin\Release\netcoreapp3.1\Database.pdb
+C:\Users\Kriss\source\repos\OpenVid\Database\obj\Release\netcoreapp3.1\Database.csprojAssemblyReference.cache
+C:\Users\Kriss\source\repos\OpenVid\Database\obj\Release\netcoreapp3.1\Database.AssemblyInfoInputs.cache
+C:\Users\Kriss\source\repos\OpenVid\Database\obj\Release\netcoreapp3.1\Database.AssemblyInfo.cs
+C:\Users\Kriss\source\repos\OpenVid\Database\obj\Release\netcoreapp3.1\Database.csproj.CoreCompileInputs.cache
+C:\Users\Kriss\source\repos\OpenVid\Database\obj\Release\netcoreapp3.1\Database.dll
+C:\Users\Kriss\source\repos\OpenVid\Database\obj\Release\netcoreapp3.1\Database.pdb
+C:\Users\Kriss\source\repos\OpenVid\Database\obj\Release\netcoreapp3.1\Database.genruntimeconfig.cache

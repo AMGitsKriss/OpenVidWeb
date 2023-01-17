@@ -1,0 +1,75 @@
+﻿@model OpenVid.Areas.Catalog.Models.Edit.EditViewModel
+@{
+    ViewBag.Title = $"Editing: {Model.Name}";
+}
+
+<h1 class="page-header"><i>Editing: </i>@Model.Name <small><a href="/@Model.Id">[View]</a></small></h1>
+
+<div class="row">
+    <div class="col-md-6">
+        @using (Html.BeginPanel("Video Details"))
+        {
+            <p>Loading...</p>
+        }
+    </div>
+    <div class="col-md-6">
+        @using (Html.BeginPanel("Video"))
+        {
+            <div class="video-container">
+                <div class="youtube-theme">
+                    <video id="youtube-theme" data-shaka-player autostart></video>
+                </div>
+            </div>
+        }
+        @using (Html.BeginPanel("Thumbnails"))
+        {
+            <p>Loading...</p>
+        }
+        @using (Html.BeginPanel("Metadata"))
+        {
+            <div class="form-group">
+                MD5: 3c5bd0aeb37924398011c74917246671 <a href="/39">[View]</a>
+                <br>
+                Dimensions: 854x480
+                <br>
+                Size:  518 MB
+                <br>
+                Quality Score: 34
+            </div>
+            <div class="form-group">
+                MD5: 725932d260ba7078294cff8ebd5a3933 <a href="/39">[View]</a>
+                <br>
+                Dimensions: 0x0
+                <br>
+                Size:  1288 MB
+                <br>
+                Quality Score: 0
+            </div>
+            <div class="form-group">
+                MD5: 725932d260ba7078294cff8ebd5a3933 <a href="/39">[View]</a>
+                <br>
+                Dimensions: 0x0
+                <br>
+                Size:  1288 MB
+                <br>
+                Quality Score: 0
+            </div>
+        }
+    </div>
+</div>
+
+@section scripts{
+    <script src="~/js/playback/play.js"></script>
+    <script src="~/js/catalog/edit.js"></script>
+    <script>
+        playVideo.init();
+        @foreach (var src in Model.VideoSources)
+        {
+        <text>
+        playVideo.setSource('@src.Key', '@src.Value');
+    </text>
+        }
+
+        editVideo.init(getPageId());
+    </script>
+}

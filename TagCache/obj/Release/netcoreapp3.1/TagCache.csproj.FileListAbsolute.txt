@@ -1,0 +1,12 @@
+C:\Users\Kriss\source\repos\OpenVid\TagCache\bin\Release\netcoreapp3.1\TagCache.deps.json
+C:\Users\Kriss\source\repos\OpenVid\TagCache\bin\Release\netcoreapp3.1\TagCache.dll
+C:\Users\Kriss\source\repos\OpenVid\TagCache\bin\Release\netcoreapp3.1\TagCache.pdb
+C:\Users\Kriss\source\repos\OpenVid\TagCache\bin\Release\netcoreapp3.1\Database.dll
+C:\Users\Kriss\source\repos\OpenVid\TagCache\bin\Release\netcoreapp3.1\Database.pdb
+C:\Users\Kriss\source\repos\OpenVid\TagCache\obj\Release\netcoreapp3.1\TagCache.csprojAssemblyReference.cache
+C:\Users\Kriss\source\repos\OpenVid\TagCache\obj\Release\netcoreapp3.1\TagCache.AssemblyInfoInputs.cache
+C:\Users\Kriss\source\repos\OpenVid\TagCache\obj\Release\netcoreapp3.1\TagCache.AssemblyInfo.cs
+C:\Users\Kriss\source\repos\OpenVid\TagCache\obj\Release\netcoreapp3.1\TagCache.csproj.CoreCompileInputs.cache
+C:\Users\Kriss\source\repos\OpenVid\TagCache\obj\Release\netcoreapp3.1\TagCache.csproj.CopyComplete
+C:\Users\Kriss\source\repos\OpenVid\TagCache\obj\Release\netcoreapp3.1\TagCache.dll
+C:\Users\Kriss\source\repos\OpenVid\TagCache\obj\Release\netcoreapp3.1\TagCache.pdb

@@ -1,0 +1,64 @@
+﻿@model OpenVid.Areas.Catalog.Models.Import.VideoSegmentItemsViewModel
+
+<div class="modal-content">
+    <div class="modal-header">
+        <h4 class="modal-title">@Model.VideoName</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+    </div>
+    <div class="modal-body">
+        <div class="alert alert-info">
+            Subtitle segments are queued first, where possible. <br />
+            Video segments are queued as the source files are created. <br />
+            Audio segments are generated imediately before the packager runs.
+        </div>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">File</th>
+                    <th scope="col">Folder</th>
+                    <th scope="col">Stream</th>
+                    <th scope="col">Language</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.Segments)
+                {
+                    <tr>
+                        <th scope="row">@item.Id</th>
+                        <td>@item.ArgInputFile</td>
+                        <td>@item.ArgInputFolder</td>
+                        <td>@item.ArgStream, @item.ArgStreamFolder</td>
+                        <td>@(item.ArgLanguage ?? "n/a")</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+        <h5>Add Subtitles</h5>
+        <form id="addSubtites" class="form-group">
+            <div class="row mb-15px">
+                @Html.HiddenFor(m => m.VideoId)
+                <div class="col-3 overflow-hidden">
+                    <input id="subtitle" name="subtitle" class="btn btn-light" type="file" accept=".srt,.vtt" />
+                </div>
+                <label class="form-label col-form-label col-2 overflow-hidden text-right" for="language">
+                    <b>Language:</b>
+                </label>
+                <div class="col-4 overflow-hidden">
+                    <select id="language" name="language" class="form-control">
+                        <option>eng</option>
+                        <option>jpn</option>
+                    </select>
+                </div>
+                <div class="col-3 overflow-hidden">
+                    <button id="submitSubtitles" class="btn btn-primary">Upload</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+    </div>
+</div>

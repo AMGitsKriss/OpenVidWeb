@@ -1,0 +1,46 @@
+﻿@model OpenVid.Areas.Playback.Models.Play.PlayViewModel
+@{
+    ViewBag.Title = Model.Name;
+    ViewBag.SearchString = Model.SearchString;
+}
+<div class="video-container">
+    <div class="youtube-theme">
+        <video id="youtube-theme" data-shaka-player autostart></video>
+    </div>
+</div>
+
+<div class="container">
+
+    <div id="detailsWrapper" class="col-6">
+        @using (Html.BeginPanel("Video Details"))
+        {
+            <p>Loading...</p>
+        }
+    </div>
+</div>
+
+@section scripts{
+    <script src="~/js/playback/play.js"></script>
+    <script src="~/js/catalog/edit.js"></script>
+    <script>
+            playVideo.init();
+        @foreach (var src in Model.VideoSources)
+        {
+        <text>
+            playVideo.setSource('@src.Key', '@src.Value');
+        </text>
+        }
+    </script>
+    @if (PermissionsService.HasPermission(User, Permissions.Catalog_Update) == PermissionResponse.HasPermission)
+    {
+        <script>
+            editVideo.init(getPageId());
+        </script>
+    }
+    else
+    {
+        <script>
+            playVideo.loadVideoDetails(getPageId());
+        </script>
+    }
+}

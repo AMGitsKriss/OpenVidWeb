@@ -1,0 +1,22 @@
+﻿@model List<CatalogManager.Models.SegmentJob>
+
+@using (Html.BeginPanel("Queued For Segmenting", true))
+{
+    <p><strong>Step 3 -</strong> Queued Segmenter jobs. Thse will produce watchable videos in a variety of resolutions and will support multiple audio tracks and subtitles.</p>
+
+    <hr />
+
+    @foreach (var video in Model)
+    {
+        <div class="row alert alert-grey m-b-10 rounded-corner">
+            <div class="col-1">Job: @video.JobId</div>
+            <div class="col-3">@video.Name</div>
+            <div class="col-1">Rdy: @video.IsReady</div>
+            <div class="col-3 form-check form-switch mb-2">
+                <button class="componentsButton btn btn-primary m-l-10" data-id="@video.VideoId">Components</button>
+                <label class="form-check-label" for="flexSwitchCheckChecked">Start when ready:</label>
+                <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" @(video.IsReady ? "checked=\"\"" : "")>
+            </div>
+        </div>
+    }
+}

@@ -1,0 +1,90 @@
+﻿@model OpenVid.Models.Login.LoginViewModel
+@using Microsoft.Extensions.Configuration
+@inject IConfiguration Configuration
+@{
+    Layout = null;
+    var SiteName = Configuration["SiteName"] ?? "OpenVid";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    @{ await Html.RenderPartialAsync("_Head");}
+</head>
+<body class="pace-top bg-white">
+    <!-- begin #page-loader -->
+    <div id="page-loader" class="fade show">
+        <div class="material-loader">
+            <svg class="circular" viewBox="25 25 50 50">
+                <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10"></circle>
+            </svg>
+            <div class="message">Loading...</div>
+        </div>
+    </div>
+    <!-- end #page-loader -->
+    <!-- begin #page-container -->
+    <div id="page-container" class="fade">
+        <!-- begin login -->
+        <div class="login login-with-news-feed">
+            <!-- begin news-feed -->
+            <div class="news-feed">
+                <div class="news-image" style="background-image: url(https://media.gq.com/photos/5df5a3794e7a380009b83bbd/16:9/w_2560%2Cc_limit/BestShows.jpg); background-size:cover !important;"></div>
+                <div class="news-caption">
+                    <h4 class="caption-title">@SiteName</h4>
+                    <p>
+                        Be it glorious.
+                    </p>
+                </div>
+            </div>
+            <!-- end news-feed -->
+            <!-- begin right-content -->
+            <div class="right-content">
+                <!-- begin login-header -->
+                <div class="login-header">
+                    <div class="brand">
+                        <span class="f-w-600">@SiteName</span>
+                        <small>responsive bootstrap 4 admin template</small>
+                    </div>
+                    <div class="icon">
+                        <i class="fa fa-sign-in"></i>
+                    </div>
+                </div>
+                <!-- end login-header -->
+                <!-- begin login-content -->
+                <div class="login-content">
+                    <form asp-action="Index" asp-controller="Login" method="POST" class="margin-bottom-0">
+                        <div class="form-group m-b-15">
+                            @Html.TextBoxFor(m => m.Email, new { placeholder = "Email", @class = "form-control form-control-lg" })
+                            @Html.ValidationMessageFor(m => m.Email, "")
+                        </div>
+                        <div class="form-group m-b-15">
+                            @Html.PasswordFor(m => m.Password, new { placeholder = "Password", @class = "form-control form-control-lg" })
+                            @Html.ValidationMessageFor(m => m.Password)
+                        </div>
+                        <div class="checkbox checkbox-css m-b-30">
+                            @Html.CheckBoxFor(m => m.RememberMe)
+                            <label asp-for="@Model.RememberMe"></label>
+                        </div>
+                        <div>
+                            @Html.ValidationMessage("message")
+                        </div>
+                        <div class="login-buttons">
+                            <button type="submit" class="btn btn-primary btn-block btn-lg">Sign me in</button>
+                        </div>
+                        <div class="m-t-20 m-b-40 p-b-40 text-inverse">
+                            Not a member yet? Click @Html.ActionLink("here", SiteMap.Register) to register.
+                        </div>
+                        <hr />
+                        <p class="text-center text-muted">
+                            &copy; Color Admin All Right Reserved 2019
+                        </p>
+                    </form>
+                </div>
+                <!-- end login-content -->
+            </div>
+            <!-- end right-container -->
+        </div>
+        <!-- end login -->
+    </div>
+    <!-- end page container -->
+</body>
+</html>

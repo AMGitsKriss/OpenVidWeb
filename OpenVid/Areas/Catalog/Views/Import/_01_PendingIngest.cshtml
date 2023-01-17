@@ -1,0 +1,17 @@
+﻿@model List<CatalogManager.Models.FoundVideo>
+
+@using (Html.BeginPanel("Unqueued Files", true))
+{
+    <p><strong>Step 1 -</strong> The following files are in the INGEST folder. They have not yet had encoder jobs planned. They are not yet available for viewing.</p>
+
+    <hr />
+
+    @foreach (var video in Model)
+    {
+        <div class="row alert alert-grey m-b-10 rounded-corner">
+            <div class="col-4 name">@video.FileName</div>
+            <div class="col-2 name">@string.Format("{0:N2} MB", (decimal)video.Size / 1024 / 1024)</div>
+            <div class="col-6 name">@string.Join(", ", video.SuggestedTags)</div>
+        </div>
+    }
+}

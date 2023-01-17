@@ -1,0 +1,12 @@
+C:\Users\Kriss\source\repos\OpenVid\CatalogManager\bin\Debug\netcoreapp3.1\CatalogManager.deps.json
+C:\Users\Kriss\source\repos\OpenVid\CatalogManager\bin\Debug\netcoreapp3.1\CatalogManager.dll
+C:\Users\Kriss\source\repos\OpenVid\CatalogManager\bin\Debug\netcoreapp3.1\CatalogManager.pdb
+C:\Users\Kriss\source\repos\OpenVid\CatalogManager\bin\Debug\netcoreapp3.1\Database.dll
+C:\Users\Kriss\source\repos\OpenVid\CatalogManager\bin\Debug\netcoreapp3.1\Database.pdb
+C:\Users\Kriss\source\repos\OpenVid\CatalogManager\obj\Debug\netcoreapp3.1\CatalogManager.csprojAssemblyReference.cache
+C:\Users\Kriss\source\repos\OpenVid\CatalogManager\obj\Debug\netcoreapp3.1\CatalogManager.AssemblyInfoInputs.cache
+C:\Users\Kriss\source\repos\OpenVid\CatalogManager\obj\Debug\netcoreapp3.1\CatalogManager.AssemblyInfo.cs
+C:\Users\Kriss\source\repos\OpenVid\CatalogManager\obj\Debug\netcoreapp3.1\CatalogManager.csproj.CoreCompileInputs.cache
+C:\Users\Kriss\source\repos\OpenVid\CatalogManager\obj\Debug\netcoreapp3.1\CatalogManager.csproj.CopyComplete
+C:\Users\Kriss\source\repos\OpenVid\CatalogManager\obj\Debug\netcoreapp3.1\CatalogManager.dll
+C:\Users\Kriss\source\repos\OpenVid\CatalogManager\obj\Debug\netcoreapp3.1\CatalogManager.pdb

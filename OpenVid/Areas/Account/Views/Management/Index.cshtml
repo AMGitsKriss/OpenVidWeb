@@ -1,0 +1,37 @@
+﻿@{
+    ViewBag.Title = "User Permissions";
+}
+
+<h1 class="page-header">User Permissions</h1>
+
+<div class="row">
+    <div class="col-md-3">
+        @using (Html.BeginPanel("Select User"))
+        {
+            <p>List of users goes here.</p>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="btn-group w-100 m-b-10">
+                        <a class="btn btn-outline-inverse">Kriss</a>
+                    </div>
+                    <div class="btn-group w-100 m-b-10">
+                        <a class="btn btn-outline-inverse">Will <em>(inactive)</em></a>
+                    </div>
+                    <div class="btn-group w-100 m-b-10">
+                        <a class="btn btn-outline-inverse">Matt</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+    <div class="col-md-9">
+        @using (Html.BeginPanel("Permissions"))
+        {
+            <p>User Stuff.</p>
+            <p>This page should show users, users in need of account confirmation, let me approve and purge accounts, and let me see who's actively paying for things >.></p>
+            <p>User Permissions.</p>
+            <p>We should be able to select a user from a dropdown list then edit their permissions.</p>
+        }
+    </div>
+</div>
+

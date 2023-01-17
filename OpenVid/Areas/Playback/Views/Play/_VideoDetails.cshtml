@@ -1,0 +1,105 @@
+﻿@model OpenVid.Areas.Playback.Models.Play.VideoDetailsViewModel
+
+@using (Html.BeginPanel("Video Details"))
+{
+    @if (Model.IsFlaggedForDeletion)
+    {
+        <div class="form-group">
+            <div class="alert alert-danger">FLAGGED FOR DELETION</div>
+        </div>
+    }
+    <h3>@Model.Name</h3>
+
+    <p>@(Model.Description ?? "No Decription")</p>
+
+    <b>Rating</b> 
+    <p>@Model.Rating</p>
+
+    <b>Tags</b> 
+    <p>@Model.Tags</p>
+
+
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
+    <script>
+        // TODO - This should be in the edit.js file
+        $("#Tags").keypress(function (e) {
+            if (e.which === 13 && !e.shiftKey) {
+                e.preventDefault();
+
+                $(this).closest("form").submit();
+            }
+        });
+
+        $(function () {
+
+            var availableTags = [];
+
+            function split(val) {
+                return val.split(/ \s*/);
+            }
+            function extractLast(term) {
+                return split(term).pop();
+            }
+
+            $.ajax({
+                type: 'GET',
+                url: '@Url.Action(SiteMap.Playback_TagGetTags)',
+                success: function (data) {
+                    availableTags = data;
+                },
+                error: function (error) {
+                    alert('Unable to get video tag list.');
+                }
+            });
+
+            $("#Tags")
+                // don't navigate away from the field on tab when selecting an item
+                .on("keydown", function (event) {
+                    if (event.keyCode === $.ui.keyCode.TAB &&
+                        $(this).autocomplete("instance").menu.active) {
+                        event.preventDefault();
+                    }
+                })
+                .autocomplete({
+                    minLength: 0,
+                    source: function (request, response) {
+                        // delegate back to autocomplete, but extract the last term
+                        response($.ui.autocomplete.filter(
+                            availableTags, extractLast(request.term)));
+                    },
+                    focus: function () {
+                        // prevent value inserted on focus
+                        return false;
+                    },
+                    select: function (event, ui) {
+                        var terms = split(this.value);
+                        // remove the current input
+                        terms.pop();
+                        // add the selected item
+                        terms.push(ui.item.value);
+                        // add placeholder to get the comma-and-space at the end
+                        terms.push("");
+                        this.value = terms.join(" ");
+                        return false;
+                    }
+                });
+        });
+
+        $(".tag-suggestion").click(function (e) {
+            var existingTags = $('#Tags').val();
+            var thisTag = $(this).attr('data-tag');
+
+            if (existingTags.indexOf(thisTag) == -1) {
+                $('#Tags').val(existingTags + ' ' + thisTag + ' ');
+                $('[data-tag=' + thisTag+']').addClass('selected');
+            }
+            else {
+                var regexExp = new RegExp(thisTag, 'g');
+                $('#Tags').val(existingTags.replace(regexExp, ''));
+                $('[data-tag=' + thisTag + ']').removeClass('selected');
+            }
+        });
+    </script>
+}
